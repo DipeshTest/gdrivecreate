@@ -1,0 +1,54 @@
+{
+  "name": "Create Google Drive File",
+  "version": "0.0.1",
+  "type": "flogo:activity",
+  "ref": "github.com/DipeshTest/gdrivecreate",
+  "description": "activity description",
+  "author": "AllStars",
+  "inputs":[
+    {
+		"name": "accessToken",
+		"type": "string",
+    "required": true
+	},
+	{
+		"name": "fileFullPath",
+		"type": "string"
+
+	},
+	{
+		"name": "emailAddr",
+		"type": "string"
+
+	},
+	{
+		"name": "sendNotification",
+		"type": "boolean"
+
+	},
+	{
+		"name": "role",
+		"type": "string",
+    "allowed": [
+        "reader",
+        "writer",
+        "organizer",
+        "owner",
+        "recency",
+        "commenter"
+      ],
+"value": "writer",
+      "required": true
+	}
+  ],
+  "outputs": [
+    {
+      "name": "statusCode",
+      "type": "string"
+    },
+    {
+      "name": "message",
+      "type": "any"
+    }
+  ]
+}
