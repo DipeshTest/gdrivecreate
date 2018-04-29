@@ -1,10 +1,9 @@
 package gdrivecreate
 
 import (
-	"strings"
+	s "strings"
 
 	"github.com/DipeshTest/allstarsshared/GDrive"
-
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
@@ -29,13 +28,14 @@ func (a *MyActivity) Metadata() *activity.Metadata {
 // Eval implements activity.Activity.Eval
 func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
-	accessToken := context.GetInput("accessToken").(string)
-	fileFullPath := context.GetInput("fileFullPath").(string)
-	emailAddr := context.GetInput("emailAddr").(string)
+	accessToken := s.TrimSpace(context.GetInput("accessToken").(string))
+	fileFullPath := s.TrimSpace(context.GetInput("fileFullPath").(string))
+	emailAddr := s.TrimSpace(context.GetInput("emailAddr").(string))
 	sendNotification := context.GetInput("sendNotification").(bool)
-	role := context.GetInput("role").(string)
+	role := s.TrimSpace(context.GetInput("role").(string))
+	timeout := s.TrimSpace(context.GetInput("timeout").(string))
 
-	if len(strings.TrimSpace(accessToken)) == 0 {
+	if len(accessToken) == 0 {
 
 		context.SetOutput("statusCode", "105")
 
@@ -43,15 +43,18 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		//context.SetOutput("failedNumbers", to)
 
 		//respond with this
-	} else if len(strings.TrimSpace(fileFullPath)) == 0 {
+	} else if len(fileFullPath) == 0 {
 
 		context.SetOutput("statusCode", "106")
 
 		context.SetOutput("message", "File Path field is blank")
 
 	} else {
+		if len(timeout) == 0 {
+			timeout = "120"
+		}
 
-		code, msg := GDrive.CreateFile(accessToken, fileFullPath, emailAddr, role, sendNotification)
+		code, msg := GDrive.CreateFile(accessToken, fileFullPath, emailAddr, role, sendNotification, timeout)
 		context.SetOutput("statusCode", code)
 
 		context.SetOutput("message", msg)

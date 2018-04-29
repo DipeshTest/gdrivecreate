@@ -39,6 +39,12 @@
       ],
 "value": "writer",
       "required": true
+	},
+  {
+		"name": "timeout",
+		"type": "string",
+    "value": "120"
+
 	}
   ],
   "outputs": [
