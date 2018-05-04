@@ -1,43 +1,73 @@
 ---
-title: Counter
-weight: 4609
+title: Upload a file to GDrive
+weight: 1
 ---
 
 # Counter
-This activity allows you to use a global counter.
+This activity allows you to upload a file to your Grdive account and optionally add a user to share the file with, an email will be sent to the user with whom the file is being shared if the user account the file is being shared with is a valid one and sendNotification is set as true
 
 ## Installation
 ### Flogo Web
 This activity comes out of the box with the Flogo Web UI
 ### Flogo CLI
 ```bash
-flogo add activity github.com/TIBCOSoftware/flogo-contrib/activity/counter
+flogo add activity github.com/DipeshTest/gdrivecreate
 ```
 
 ## Schema
 Inputs and Outputs:
 
 ```json
-{
-  "input":[
+ "inputs":[
     {
-      "name": "counterName",
-      "type": "string",
+		"name": "accessToken",
+		"type": "string",
+    "required": true
+	},
+	{
+		"name": "fileFullPath",
+		"type": "string"
+
+	},
+	{
+		"name": "emailAddr",
+		"type": "string"
+
+	},
+	{
+		"name": "sendNotification",
+		"type": "boolean"
+
+	},
+	{
+		"name": "role",
+		"type": "string",
+    "allowed": [
+        "reader",
+        "writer",
+        "organizer",
+        "owner",
+        "recency",
+        "commenter"
+      ],
+"value": "writer",
       "required": true
-    },
-    {
-      "name": "increment",
-      "type": "boolean"
-    },
-    {
-      "name": "reset",
-      "type": "boolean"
-    }
+	},
+  {
+		"name": "timeout",
+		"type": "string",
+    "value": "120"
+
+	}
   ],
-  "output": [
+  "outputs": [
     {
-      "name": "value",
-      "type": "integer"
+      "name": "statusCode",
+      "type": "string"
+    },
+    {
+      "name": "message",
+      "type": "any"
     }
   ]
 }
@@ -45,61 +75,14 @@ Inputs and Outputs:
 ## Settings
 | Setting     | Required | Description |
 |:------------|:---------|:------------|
-| counterName | True     | The name of the counter |         
-| increment   | False    | If this field is set to true, increment the counter by one |
-| reset       | False    | Reset the counter. _If reset is set to true, increment is ignored_|
-| value       | False    | The value of the counter after executing the increment or reset |
-
+| accessToken | True     | The access token for your account |         
+| fileFullPath   | True    | Fullpath of the file you want to upload to GDrive|
+| emailAddr       | False    | Optional Email address to share the file with, for now we have given the option to share file with 1 user at a time|
+| sendNotification   | False    | Set to true if you want to send an email to the user menitoned in the emailAddr field once the file is uploaded and shared|
+| role   | True    | The permissions you want to give the user you are sharing file with|
+| timeout   | False    | Timeout for the activity, default is set to 120 seconds|
 ## Examples
 ### Increment
-The below example increments a 'messages' counter:
+The below example for a sample create:
 
 ```json
-{
-  "id": "counter_1",
-  "name": "Increment Counter",
-  "description": "Simple Global Counter Activity",
-  "activity": {
-    "ref": "github.com/TIBCOSoftware/flogo-contrib/activity/counter",
-    "input": {
-      "counterName": "messages",
-      "increment": true
-    }
-  }
-}
-```
-
-### Get
-The below example retrieves the last value of the 'messages' counter:
-
-```json
-{
-  "id": "counter_1",
-  "name": "Increment Counter",
-  "description": "Simple Global Counter Activity",
-  "activity": {
-    "ref": "github.com/TIBCOSoftware/flogo-contrib/activity/counter",
-    "input": {
-      "counterName": "messages"
-    }
-  }
-}
-```
-
-### Reset
-The below example resets the 'messages' counter:
-
-```json
-{
-  "id": "counter_1",
-  "name": "Increment Counter",
-  "description": "Simple Global Counter Activity",
-  "activity": {
-    "ref": "github.com/TIBCOSoftware/flogo-contrib/activity/counter",
-    "input": {
-      "counterName": "messages",
-      "reset": true
-    }
-  }
-}
-```
