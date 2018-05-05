@@ -4,11 +4,11 @@ weight: 1
 ---
 
 # Counter
-This activity allows you to upload a file to your Grdive account and optionally add a user to share the file with, an email will be sent to the user with whom the file is being shared if the user account the file is being shared with is a valid one and sendNotification is set as true
+This activity allows you to upload a file to your Grdive account and optionally add a user to share the file with. An email will be sent to the user with whom the file is being shared if the email address is valid and sendNotification is set to true
 
 ## Installation
 ### Flogo Web
-This activity comes out of the box with the Flogo Web UI
+This activity is built by Team AllStars
 ### Flogo CLI
 ```bash
 flogo add activity github.com/DipeshTest/gdrivecreate
@@ -22,7 +22,7 @@ Inputs and Outputs:
     {
 		"name": "accessToken",
 		"type": "string",
-    "required": true
+		"required": true
 	},
 	{
 		"name": "fileFullPath",
@@ -42,22 +42,21 @@ Inputs and Outputs:
 	{
 		"name": "role",
 		"type": "string",
-    "allowed": [
-        "reader",
-        "writer",
-        "organizer",
-        "owner",
-        "recency",
-        "commenter"
-      ],
-"value": "writer",
-      "required": true
+		"allowed": [
+			"reader",
+			"writer",
+			"organizer",
+			"owner",
+			"recency",
+			"commenter"
+		  ],
+		"value": "writer",
+		"required": true
 	},
-  {
+	{
 		"name": "timeout",
 		"type": "string",
-    "value": "120"
-
+		"value": "120"
 	}
   ],
   "outputs": [
@@ -82,9 +81,15 @@ Inputs and Outputs:
 | role   | True    | The permissions you want to give the user you are sharing file with|
 | timeout   | False    | Timeout for the activity, default is set to 120 seconds|
 ## Examples
-### Increment
+### Create a file on Google Drive
 The below example for a sample create:
 
 ```json
-
+{
+	"accessToken": "ya29.GlurBW7n5A2Fk_rstX9KMVeXLEOT4k0OhmSnF_w7626K9kgKmempF_xTDJ6uQVMkdWWWIMiNcb-ht6Rv9cnhsUb2VhtF9h7nltFw0iniwp10dmDQsFT49giOqFR8",
+	"fileFullPath": "C:\\allstars\\Gdrive\\CodeOfConduct.pdf",
+	"emailAddr": "drivecreate@allstars.com",
+	"sendNotification":"true",
+	"role": "writer"
+}
 ```
