@@ -93,3 +93,15 @@ The below example for a sample create:
 	"role": "writer"
 }
 ```
+
+
+## Response Codes
+### Google Drive Create
+| ResponseCode     | Type | Description |
+|:------------|:---------|:------------|
+|200 |OK| The request was successful and the response body contains the representation requested. *If the email is specified and role is not selected, then the file will be uploaded & no email would be sent|
+|101 |INVALID INPUT| The file path specified is invalid.|
+|102 |INVALID INPUT| The specified destination is a folder.|
+|105 |INVALID INPUT| Access token is not specified.|
+|106 |INVALID INPUT| File path is not specified.|
+|401 |AUTHENTICATION ERROR| Invalid Access Token.|
