@@ -40,9 +40,8 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		context.SetOutput("statusCode", "105")
 
 		context.SetOutput("message", "Access Token field is blank")
-		//context.SetOutput("failedNumbers", to)
-
-		//respond with this
+		
+		
 	} else if len(fileFullPath) == 0 {
 
 		context.SetOutput("statusCode", "106")
