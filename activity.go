@@ -3,7 +3,7 @@ package gdrivecreate
 import (
 	s "strings"
 
-	"github.com/DipeshTest/allstarsshared/GDrive"
+	"github.com/DipeshTest/allstarsshared/gdrive"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
@@ -54,7 +54,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 			timeout = "120"
 		}
 
-		code, msg := GDrive.CreateFile(accessToken, fileFullPath, emailAddr, role, sendNotification, timeout)
+		code, msg := gdrive.CreateFile(accessToken, fileFullPath, emailAddr, role, sendNotification, timeout)
 		context.SetOutput("statusCode", code)
 
 		context.SetOutput("message", msg)
