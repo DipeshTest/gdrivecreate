@@ -79,7 +79,7 @@ Inputs and Outputs:
 | emailAddr       | False    | Optional Email address to share the file with, for now we have given the option to share file with 1 user at a time|
 | sendNotification   | False    | Set to true if you want to send an email to the user menitoned in the emailAddr field once the file is uploaded and shared|
 | role   | True    | The permissions you want to give the user you are sharing file with|
-| timeout   | False    | Timeout for the activity, default is set to 120 seconds|
+| timeout   | False    | Timeout for the activity, default is 120 seconds|
 ## Examples
 ### Create a file on Google Drive
 The below example for a sample create:
