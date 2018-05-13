@@ -4,8 +4,8 @@ weight: 1
 ---
 
 # Upload a file to GDrive
-This activity allows you to upload a file to your Grdive account and optionally add a user to share the file with. An email will be sent to the user with whom the file is being shared if the email address is valid and sendNotification is set to true.
-This activity is built by FLOGO AllStars team.
+This activity allows you to upload a file to your Grdive account and optionally add a user to share the file with. An email will be sent to the user with whom the file is being shared if the email address is valid and sendNotification is set to true. This activity is built by Team AllStars.
+
 ## Installation
 ### Flogo CLI
 ```bash
