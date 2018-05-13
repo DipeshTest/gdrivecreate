@@ -98,3 +98,4 @@ Please refer activity_test.go
 |105 |INVALID INPUT| Access token is not specified.|
 |106 |INVALID INPUT| File path is not specified.|
 |401 |AUTHENTICATION ERROR| Invalid Access Token.|
+Note - Please refer link - https://developers.google.com/doubleclick-search/v2/standard-error-responses for other standard error responses from Google 
