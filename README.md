@@ -3,16 +3,22 @@ title: Upload a file to GDrive
 weight: 1
 ---
 
-# Counter
-This activity allows you to upload a file to your Grdive account and optionally add a user to share the file with. An email will be sent to the user with whom the file is being shared if the email address is valid and sendNotification is set to true
+# Upload a file to GDrive
+This activity allows you to upload a file to your Grdive account and optionally add a user to share the file with. An email will be sent to the user with whom the file is being shared if the email address is valid and sendNotification is set to true.
 
 ## Installation
 ### Flogo Web
 This activity is built by Team AllStars
 ### Flogo CLI
 ```bash
-flogo add activity github.com/DipeshTest/gdrivecreate
+flogo install github.com/DipeshTest/gdrivecreate
 ```
+
+### Third-party libraries used
+- #### package drive:
+	Package drive provides access to the Drive API. For more details, check https://developers.google.com/drive/
+- #### package googleapi:
+	Package googleapi contains the common code shared by all Google API libraries.
 
 ## Schema
 Inputs and Outputs:
