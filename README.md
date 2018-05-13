@@ -15,9 +15,9 @@ flogo install github.com/DipeshTest/gdrivecreate
 ```
 
 ### Third-party libraries used
-- #### package drive:
+- #### package drive - "google.golang.org/api/drive/v3":
 	Package drive provides access to the Drive API. For more details, check https://developers.google.com/drive/
-- #### package googleapi:
+- #### package googleapi - "google.golang.org/api/googleapi":
 	Package googleapi contains the common code shared by all Google API libraries.
 
 ## Schema
@@ -87,18 +87,7 @@ Inputs and Outputs:
 | role   | True    | The permissions you want to give the user you are sharing file with|
 | timeout   | False    | Timeout for the activity, default is 120 seconds|
 ## Examples
-### Create a file on Google Drive
-The below example for a sample create:
-
-```json
-{
-	"accessToken": "ya29.GlurBW7n5A2Fk_rstX9KMVeXLEOT4k0OhmSnF_w7626K9kgKmempF_xTDJ6uQVMkdWWWIMiNcb-ht6Rv9cnhsUb2VhtF9h7nltFw0iniwp10dmDQsFT49giOqFR8",
-	"fileFullPath": "C:\\allstars\\Gdrive\\CodeOfConduct.pdf",
-	"emailAddr": "drivecreate@allstars.com",
-	"sendNotification":"true",
-	"role": "writer"
-}
-```
+Please refer activity_test.go 
 
 
 ## Response Codes
